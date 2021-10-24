@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace HW_02
 {
@@ -18,6 +18,13 @@ namespace HW_02
             int[] result3 = GetLettersAndPunctuationCount(sentence);
             Console.WriteLine(result3[0]);
             Console.WriteLine(result3[1]);
+
+            string[] result = SortWords(sentence);
+
+            foreach(var word in result)
+            {
+                Console.WriteLine(word);
+            }
         }
 
         static string RemoveLongestWord(string sentence)
@@ -95,5 +102,19 @@ namespace HW_02
             int [] result =  new int [] {letter, punctuation};
             return result;
         }
+
+        static string[] SortWords(string sentence)
+        {
+            string[] words = sentence.Split(' ');
+            int[] wordLengths = new int[words.Length];
+            for(int i = 0; i < words.Length; i++){
+                wordLengths[i] = words[i].Length;
+            }
+
+            Array.Sort(wordLengths, words); // sort by asc
+            Array.Reverse(words);
+
+            return words;
+        }   
     }
 }
